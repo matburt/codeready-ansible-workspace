@@ -1,9 +1,13 @@
 ---
 projects:
-  - name: Automation Platform Codeready Examples
+  - name: TowerExamples
     source:
       type: git
       location: "https://github.com/ansible/tower-example"
+  - name: AnsibleExamples
+    source:
+      type: git
+      location: "https://github.com/ansible/ansible-examples"
 metadata:
   generateName: ansible-
 components:
@@ -17,27 +21,23 @@ components:
     image: ansible/ansible-runner
     memoryLimit: 512Mi
     mountSources: true
+    command: ['sleep', 'infinity']
 commands:
   - name: run
     actions:
-      - type: exec
-        component: ansible
-        command: ansible-runner -p helloworld.yml run /runner
-        workdir: '/runner'
-  - name: Debug current file
-    actions:
       - type: vscode-launch
         referenceContent: |
-          {
-            "version": "0.2.0",
-            "configurations": [
               {
-                "name": "Python: Current File",
-                "type": "python",
-                "request": "launch",
-                "program": "${file}",
-                "console": "internalConsole"
+                "version": "2.0.0",
+                "tasks":
+                  [
+                    {
+                      "label": "launch runner",
+                      "type": "shell",
+                      "options": {"cwd": "/runner"},
+                      "command": "ansible-runner",
+                      "args": ["-p", "test.yml", "run", "/runner"]
+                    }
+                  ]
               }
-            ]
-          }
 apiVersion: 1.0.0
