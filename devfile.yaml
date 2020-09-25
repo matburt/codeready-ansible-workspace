@@ -8,6 +8,10 @@ projects:
     source:
       type: git
       location: "https://github.com/ansible/ansible-examples"
+  - name: Fest2020
+    source:
+      type: git
+      location: "https://galaxy.ansible.com/kyleabenson/fest2020collection"
 metadata:
   generateName: ansible-
 components:
