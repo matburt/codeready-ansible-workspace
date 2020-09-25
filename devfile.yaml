@@ -11,7 +11,7 @@ projects:
   - name: Fest2020
     source:
       type: git
-      location: "https://galaxy.ansible.com/kyleabenson/fest2020collection"
+      location: "https://github.com/kyleabenson/fest2020collection"
 metadata:
   generateName: ansible-
 components:
